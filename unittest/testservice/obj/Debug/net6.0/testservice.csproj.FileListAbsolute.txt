@@ -1,0 +1,12 @@
+/Users/jcelestino/git/dotnet-web/unittest/testservice/obj/Debug/net6.0/testservice.csproj.AssemblyReference.cache
+/Users/jcelestino/git/dotnet-web/unittest/testservice/obj/Debug/net6.0/testservice.GeneratedMSBuildEditorConfig.editorconfig
+/Users/jcelestino/git/dotnet-web/unittest/testservice/obj/Debug/net6.0/testservice.AssemblyInfoInputs.cache
+/Users/jcelestino/git/dotnet-web/unittest/testservice/obj/Debug/net6.0/testservice.AssemblyInfo.cs
+/Users/jcelestino/git/dotnet-web/unittest/testservice/obj/Debug/net6.0/testservice.csproj.CoreCompileInputs.cache
+/Users/jcelestino/git/dotnet-web/unittest/testservice/bin/Debug/net6.0/testservice.deps.json
+/Users/jcelestino/git/dotnet-web/unittest/testservice/bin/Debug/net6.0/testservice.dll
+/Users/jcelestino/git/dotnet-web/unittest/testservice/bin/Debug/net6.0/ref/testservice.dll
+/Users/jcelestino/git/dotnet-web/unittest/testservice/bin/Debug/net6.0/testservice.pdb
+/Users/jcelestino/git/dotnet-web/unittest/testservice/obj/Debug/net6.0/testservice.dll
+/Users/jcelestino/git/dotnet-web/unittest/testservice/obj/Debug/net6.0/ref/testservice.dll
+/Users/jcelestino/git/dotnet-web/unittest/testservice/obj/Debug/net6.0/testservice.pdb
