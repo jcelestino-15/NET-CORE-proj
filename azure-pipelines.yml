@@ -21,23 +21,15 @@ steps:
   inputs:
     restoreSolution: '$(solution)'
 
-- task: NuGetCommand@2
-  displayName: NuGet restore packages
+- task: DotNetCoreCLI@2
+  displayName: 'dotnet restore'
   inputs:
-    command: 'restore'
-    restoreSolution: '$(solution)'
-    feedsToUse: 'select'
+    command: restore
+    projects: '**/*.csproj'
 
 - task: DotNetCoreCLI@2
-  displayName: Build
+  displayName: 'donet build'
   inputs:
     command: build
     projects: '**/*.csproj'
     arguments: '--configuration ${buildConfiguration)'
-
-- task: DotNetCoreCLI@2
-  displayName: Test
-  inputs:
-    command: test
-    projects: '**/*.Tests/*csproj'
-    arguments: '--configuration $(buildConfiguration)'
