@@ -16,25 +16,23 @@ variables:
 
 steps:
 - task: NuGetToolInstaller@1
-  inputs:
-    versionSpec: 
-    checkLatest: true
 
 - task: NuGetCommand@2
   inputs:
     restoreSolution: '$(solution)'
 
-- task: DotNetCoreCLI@2
-  displayName: Restore
+- task: NuGetCommand@2
+  displayName: NuGet restore packages
   inputs:
-    command: restore
-    projects: '**/*.csproj'
-    feedsToUse: select
+    command: 'restore'
+    restoreSolution: '$(solution)'
+    feedsToUse: 'select'
 
 - task: DotNetCoreCLI@2
   displayName: Build
   inputs:
     command: build
+    projects: '**/*.csproj'
     arguments: '--configuration ${buildConfiguration)'
 
 - task: DotNetCoreCLI@2
