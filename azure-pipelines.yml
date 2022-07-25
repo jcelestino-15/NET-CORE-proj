@@ -25,6 +25,7 @@ steps:
   inputs:
     packageType: 'sdk'
     version: '5.0.x'
+    includePreviewVersions: true
 
 - task: DotNetCoreCLI@2
   displayName: 'dotnet restore'
@@ -35,6 +36,6 @@ steps:
 - task: DotNetCoreCLI@2
   displayName: 'donet build'
   inputs:
-    command: build
+    command: 'build'
     projects: '**/*.csproj'
     arguments: '--configuration ${buildConfiguration)'
