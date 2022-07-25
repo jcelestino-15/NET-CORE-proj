@@ -25,7 +25,6 @@ steps:
   displayName: 'dotnet restore'
   inputs:
     command: 'restore'
-    projects: '**/*.csproj'
     feedsToUse: 'select'
     vstsFeed: 'c176565d-fe94-4c77-b85e-f213ae1910a0'
 
