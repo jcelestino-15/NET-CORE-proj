@@ -15,12 +15,12 @@ variables:
   buildConfiguration: 'Release'
 
 steps:
-
-- task: DotNetCoreCLI@2
-  displayName: restore 
+- task: UseDotNet@2
+  displayName: Install a .NET Core SDK
   inputs:
-    command: 'restore'
-    projects: '**/*.csproj'
+    version: '5.0.x'
+    includePreviewVersions: true
+    performMultiLevelLookup: true
 
 - task: DotNetCoreCLI@2
   displayName: Build
@@ -32,5 +32,5 @@ steps:
 - task: DotNetCoreCLI@2
   inputs:
     command: test
-    projects: '**/*.Test/*.csproj'
+    projects: '**/*Test/*.csproj'
     arguments: '--configuration $(buildConfiguration)'
