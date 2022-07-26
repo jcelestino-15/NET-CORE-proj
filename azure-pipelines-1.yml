@@ -16,9 +16,9 @@ steps:
 - task: DotNetCoreCLI@2
   displayName: Build
   inputs:
-    command: 'build'
-    projects: '**/*.csproj'
-    arguments: '--configuration $(buildConfiguration)'
+    command: 'publish'
+    publishWebProjects: true
+    arguments: '--configuration $(buildConfiguration) --output $(Build.ArtifactStagingDirectory)'
 
 - task: DotNetCoreCLI@2
   displayName: Test
@@ -27,17 +27,10 @@ steps:
     projects: '**/**Tests/*.csproj'
     arguments: '--configuration $(buildConfiguration) --collect "Code coverage"'
 
-- task: DotNetCoreCLI@2
-  displayName: Publish
-  inputs:
-    command: 'publish'
-    publishWebProjects: True
-    arguments: '--configuration $(BuildConfiguration) --output $(Build.ArtifactStagingDirectory)'
-
-# this code takes all files in $(Build.ArtifactStagingDirectory) and uploads them as an artifact 
-# of the build
 - task: PublishBuildArtifacts@1
   inputs:
-    targetPath: '$(Build.ArtifactStagingDirectory)'
-    artifactName: 'myWebsitename'
+    PathtoPublish: '$(Build.ArtifactStagingDirectory)'
+    ArtifactName: 'drop'
+    publishLocation: 'Container'
+
     
