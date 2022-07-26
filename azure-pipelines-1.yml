@@ -31,9 +31,8 @@ steps:
   displayName: Publish
   inputs:
     command: 'publish'
-    publishWebProjects: True
+    publishWebProjects: true
     arguments: '--configuration $(buildConfiguration) --output $(Build.ArtifactStagingDirectory)'
-    zipAfterPublish: True
 
 # this code takes all files in $(Build.ArtifactStagingDirectory) and uploads them as an artifact 
 # of the build
