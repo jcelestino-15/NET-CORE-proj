@@ -1,6 +1,6 @@
 ﻿using System;
-namespace testservice;
-public class Class1
+namespace test.services;
+public class testservice
 {
     public bool IsPrime(int candidate)
     {
