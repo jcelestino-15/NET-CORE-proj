@@ -8,8 +8,8 @@ namespace test.UnitTests.services
         [Fact]
         public void IsPrime_InputIs1_ReturnFalse()
         {
-            var testservice = new testservice();
-            bool result = testservice.IsPrime(1);
+            var testService = new testservice();
+            bool result = testService.IsPrime(1);
 
             Assert.False(result, "1 should not be prime");
         }
