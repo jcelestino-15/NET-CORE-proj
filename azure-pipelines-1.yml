@@ -13,7 +13,7 @@ variables:
   buildConfiguration: 'Release'
 
 jobs:
-- job: Build-and-Publish
+- job: BuildandPublish
   steps:
   - task: DotNetCoreCLI@2
     displayName: Build
@@ -37,3 +37,4 @@ jobs:
 
 - deployment: MyNETCoreDeploy
   displayName: DeployingNETCore
+  environment: NET-Core-dev
