@@ -40,4 +40,12 @@ stages:
   jobs:
   - deployment: MyNETCoreDeploy
     displayName: DeployingNETCore
-    environment: NET-Core-dev
+    environment:
+      name: NET-Core-dev
+      resourceType: VirtualMachine
+    strategy:
+      runOnce:
+        deploy:
+          steps:
+          - checkout: self
+          - script: echo attempt deployment 
