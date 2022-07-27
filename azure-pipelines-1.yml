@@ -12,29 +12,32 @@ pool:
 variables:
   buildConfiguration: 'Release'
 
-jobs:
-- job: BuildandPublish
-  steps:
-  - task: DotNetCoreCLI@2
-    displayName: Build
-    inputs:
-      command: 'publish'
-      publishWebProjects: true
-      arguments: '--configuration $(buildConfiguration) --output $(Build.ArtifactStagingDirectory)'
+stages:
+- stage: Build
+  jobs:
+  - job: PublishandTest
+    steps:
+    - task: DotNetCoreCLI@2
+      displayName: Build
+      inputs:
+        command: 'publish'
+        publishWebProjects: true
+        arguments: '--configuration $(buildConfiguration) --output $(Build.ArtifactStagingDirectory)'
+    - task: DotNetCoreCLI@2
+      displayName: Test
+      inputs:
+        command: 'test'
+        projects: '**/**Tests/*.csproj'
+        arguments: '--configuration $(buildConfiguration) --collect "Code coverage"'
 
-  - task: DotNetCoreCLI@2
-    displayName: Test
-    inputs:
-      command: 'test'
-      projects: '**/**Tests/*.csproj'
-      arguments: '--configuration $(buildConfiguration) --collect "Code coverage"'
+    - task: PublishBuildArtifacts@1
+      inputs:
+        PathtoPublish: '$(Build.ArtifactStagingDirectory)'
+        ArtifactName: 'drop'
+        publishLocation: 'Container'
 
-  - task: PublishBuildArtifacts@1
-    inputs:
-      PathtoPublish: '$(Build.ArtifactStagingDirectory)'
-      ArtifactName: 'drop'
-      publishLocation: 'Container'
-
-- deployment: MyNETCoreDeploy
-  displayName: DeployingNETCore
-  environment: NET-Core-dev
+- stage: NETCoreAppDeployment
+  jobs:
+  - deployment: MyNETCoreDeploy
+    displayName: DeployingNETCore
+    environment: NET-Core-dev
