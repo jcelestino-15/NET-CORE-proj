@@ -48,8 +48,14 @@ stages:
         deploy:
           steps:
           - task: CmdLine@2
+            displayName: Extract zip file to ~/wwww
             inputs:
               script: |
                 mkdir www
                 unzip ~/azagent/azagent/_work/1/drop/s.zip -d /home/jcelestino/www
               workingDirectory: '/home/jcelestino'
+          - task: CmdLine@2
+            displayName: dotnet run
+            inputs:
+              script: 'dotnet dotnet-web.dll'
+              workingDirectory: '/home/jcelestino/www'
