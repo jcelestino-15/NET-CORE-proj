@@ -50,10 +50,8 @@ stages:
           - task: CmdLine@2
             displayName: Extract zip file to ~/wwww
             inputs:
-              script: |
-                mkdir www
-                unzip ~/azagent/azagent/_work/1/drop/s.zip -d /home/jcelestino/www
-              workingDirectory: '/home/jcelestino'
+              script: 'unzip s.zip -d /home/jcelestino/www'
+              workingDirectory: '/home/jcelestino/azagent/_work/1/drop'
           - task: CmdLine@2
             displayName: dotnet run
             inputs:
