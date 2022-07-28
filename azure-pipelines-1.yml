@@ -49,5 +49,5 @@ stages:
           steps:
           - task: ExtractFiles@1
             inputs: 
-             archiveFilePatterns: '**/azagent/*.zip'
+             archiveFilePatterns: '**/*.zip'
              destinationFolder: '/home/jcelestino/www'
