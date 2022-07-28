@@ -52,3 +52,5 @@ stages:
               buildType: 'current'
               downloadType: 'specific'
               downloadPath: '/home/jcelestino/www'
+              cleanDestinationFolder: true
+              extractTars: true
