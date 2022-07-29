@@ -47,13 +47,9 @@ stages:
       runOnce:
         deploy:
           steps:
-          - task: CmdLine@2
-            displayName: Extract zip file to ~/wwww
+          - task: ExtractFiles@1
             inputs:
-              script: 'unzip s.zip -d /home/jcelestino/www'
-              workingDirectory: '/home/jcelestino/azagent/azagent/_work/1/drop'
-          - task: CmdLine@2
-            displayName: dotnet run
-            inputs:
-              script: 'dotnet dotnet-web.dll'
-              workingDirectory: '/home/jcelestino/www'
+              archiveFilePatterns: '/home/jcelestino/azagent/azagent/_work/1/drop/s.zip'
+              destinationFolder: '/home/jcelestino/www'
+              cleanDestinationFolder: true
+
