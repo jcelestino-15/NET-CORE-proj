@@ -51,7 +51,7 @@ stages:
           - task: CmdLine@2
             inputs:
               script: |
-                echo $(PASSWORD) | sudo -s 
+                echo $(PASSWORD) | sudo -S
                 systemctl enable dotnet-web
                 systemctl start dotnet-web
           - task: ExtractFiles@1
