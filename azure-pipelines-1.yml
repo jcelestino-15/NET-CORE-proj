@@ -23,7 +23,7 @@ stages:
       inputs:
         command: 'publish'
         publishWebProjects: true
-        arguments: '--configuration $(buildConfiguration) --output $(Build.ArtifactStagingDirectory) --runtime $(RID)'
+        arguments: '--configuration $(buildConfiguration) --output $(Build.ArtifactStagingDirectory) --runtime $(RID) --self-contained false'
     - task: DotNetCoreCLI@2
       displayName: Test
       inputs:
