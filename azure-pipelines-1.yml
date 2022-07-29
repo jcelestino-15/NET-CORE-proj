@@ -59,7 +59,4 @@ stages:
               destinationFolder: '/home/jcelestino/www'
               cleanDestinationFolder: true
               overwriteExistingFiles: true
-          
-          - task: CmdLine@2
-            inputs:
-              script: echo $(PASSWORD) | sudo -S systemctl restart dotnet-web
+
