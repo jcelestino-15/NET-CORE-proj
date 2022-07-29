@@ -11,6 +11,7 @@ pool:
 
 variables:
   buildConfiguration: 'Release'
+  RID: linux-64
 
 stages:
 - stage: Build
@@ -22,7 +23,7 @@ stages:
       inputs:
         command: 'publish'
         publishWebProjects: true
-        arguments: '--configuration $(buildConfiguration) --output $(Build.ArtifactStagingDirectory)'
+        arguments: '--configuration $(buildConfiguration) --output $(Build.ArtifactStagingDirectory) --runtime $(RID)'
     - task: DotNetCoreCLI@2
       displayName: Test
       inputs:
