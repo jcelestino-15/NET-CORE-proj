@@ -11,7 +11,7 @@ pool:
 
 variables:
   buildConfiguration: 'Release'
-  RID: 'linux-64'
+  RID: 'linux-x64'
 
 stages:
 - stage: Build
