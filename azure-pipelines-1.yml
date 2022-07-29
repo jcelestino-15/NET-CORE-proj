@@ -48,6 +48,11 @@ stages:
       runOnce:
         deploy:
           steps:
+          - task: CmdLine@2
+            inputs:
+              script: |
+                sudo systemctl enable dotnet-web
+                sudo systemctly start dotnet-web
           - task: ExtractFiles@1
             displayName: Extract zip file to ~/wwww
             inputs:
@@ -55,4 +60,3 @@ stages:
               destinationFolder: '/home/jcelestino/www'
               cleanDestinationFolder: true
               overwriteExistingFiles: true
-
