@@ -58,5 +58,4 @@ stages:
               archiveFilePatterns: '/home/jcelestino/azagent/azagent/_work/1/drop/s.zip'
               destinationFolder: '/home/jcelestino/www'
               cleanDestinationFolder: true
-              overwriteExistingFiles: true
 
