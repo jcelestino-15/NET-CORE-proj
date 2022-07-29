@@ -47,9 +47,9 @@ stages:
       runOnce:
         deploy:
           steps:
-          - task: ExtractFiles@1
+          - task: CmdLine@2
+            displayName: Extract zip file to ~/wwww
             inputs:
-              archiveFilePatterns: '/home/jcelestino/azagent/azagent/_work/1/drop/s.zip'
-              destinationFolder: '/home/jcelestino/www'
-              cleanDestinationFolder: true
+              script: 'unzip s.zip -d /home/jcelestino/www'
+              workingDirectory: '/home/jcelestino/azagent/azagent/_work/1/drop'
 
