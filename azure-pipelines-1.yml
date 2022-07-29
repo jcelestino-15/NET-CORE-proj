@@ -50,9 +50,7 @@ stages:
           steps:
           - task: CmdLine@2
             inputs:
-              script: |
-                echo $(PASSWORD) | sudo -S systemctl enable dotnet-web
-                echo $(PASSWORD) | sudo -S systemctl start dotnet-web
+              script: echo $(PASSWORD) | sudo -S systemctl enable dotnet-web
 
           - task: ExtractFiles@1
             displayName: Extract zip file to ~/wwww
@@ -61,3 +59,7 @@ stages:
               destinationFolder: '/home/jcelestino/www'
               cleanDestinationFolder: true
               overwriteExistingFiles: true
+          
+          - task: CmdLine@2
+            inputs:
+              script: echo $(PASSWORD) | sudo -S systemctl restart dotnet-web
