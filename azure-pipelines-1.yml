@@ -51,8 +51,9 @@ stages:
           - task: CmdLine@2
             inputs:
               script: |
-                sudo systemctl enable dotnet-web
-                sudo systemctl start dotnet-web
+                echo $(PASSWORD) | sudo -s 
+                systemctl enable dotnet-web
+                systemctl start dotnet-web
           - task: ExtractFiles@1
             displayName: Extract zip file to ~/wwww
             inputs:
