@@ -57,7 +57,7 @@ stages:
             inputs:
               buildType: 'current'
               downloadType: 'single'
-              downloadPath: '$(System.ArtifactsDirectory)'
+              downloadPath: '$(Agent.BuildDirectory)'
               artifactName: 'drop'
 
           - task: ExtractFiles@1
