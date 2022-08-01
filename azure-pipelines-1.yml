@@ -53,6 +53,13 @@ stages:
             inputs:
               script: echo $(PASSWORD) | sudo -S systemctl stop dotnet-web
 
+          - task: DownloadBuildArtifacts@0
+            inputs:
+              buildType: 'current'
+              downloadType: 'single'
+              downloadPath: '$(System.ArtifactsDirectory)'
+              artifactName: 'drop'
+
           - task: ExtractFiles@1
             displayName: Extract zip file to ~/wwww
             inputs:
