@@ -49,8 +49,9 @@ stages:
         deploy:
           steps:
           - task: CmdLine@2
+            displayName: Stop NET Core Service
             inputs:
-              script: echo $(PASSWORD) | sudo -S systemctl start dotnet-web
+              script: echo $(PASSWORD) | sudo -S systemctl stop dotnet-web
 
           - task: ExtractFiles@1
             displayName: Extract zip file to ~/wwww
@@ -59,4 +60,10 @@ stages:
               destinationFolder: '/home/jcelestino/www'
               cleanDestinationFolder: false
               overwriteExistingFiles: true
+          
+          - task: CmdLine@2
+            displayName: Start Service
+            inputs:
+              script: echo $(PASSWORD) | sudo -S systemctl start dotnet-web
+
 
