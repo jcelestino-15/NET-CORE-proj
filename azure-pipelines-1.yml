@@ -38,9 +38,9 @@ stages:
         publishLocation: 'Container'
 
 - stage: NETCoreApp_Dev 
-  dependsOn: Build
   condition: |
-    and(
+    and
+    (
       succeeded(),
       eq(variables['Build.SourceBranchName'], 'master' )
     )
