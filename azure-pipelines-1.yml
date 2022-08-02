@@ -37,7 +37,8 @@ stages:
         ArtifactName: 'drop'
         publishLocation: 'Container'
 
-- stage: NETCoreApp_Dev 
+- stage: NETCoreApp_Dev
+  dependsOn: Build  
   condition: |
     and
     (
