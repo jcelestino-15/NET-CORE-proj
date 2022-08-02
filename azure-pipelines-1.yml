@@ -46,8 +46,7 @@ stages:
       eq(variables['Build.SourceBranchName'], 'master' )
     )
   jobs:
-  - deployment: MyNETCoreDev 
-    displayName: DeployingNETCore-Dev
+  - deployment: Deploy
     environment:
       name: NET-Core-dev
       resourceType: VirtualMachine
@@ -83,8 +82,7 @@ stages:
 - stage: NETCoreApp_STG
   dependsOn: NETCoreApp_Dev
   jobs:
-    - deployment: MyNETCoreStg
-      displayName: DeployingNETCore-Stg
+    - deployment: Deploy
       environment:
         name: NET-Core-stg
         resourceType: VirtualMachine
@@ -120,8 +118,7 @@ stages:
 - stage: NETCoreApp_PRD
   dependsOn: NETCoreApp_STG
   jobs:
-    - deployment: MyNETCorePrd
-      displayName: DeployingNETCore-Prd
+    - deployment: Deploy 
       environment:
        name: NET-Core-prd
        resourceType: VirtualMachine
