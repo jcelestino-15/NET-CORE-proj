@@ -94,7 +94,7 @@ stages:
            - task: CmdLine@2
              displayName: Stop NET Core Service
              inputs:
-              script: echo $(PASSWORD) | sudo -S systemctl stop dotnet-web
+               script: echo $(PASSWORD) | sudo -S systemctl stop dotnet-web
 
            - task: DownloadBuildArtifacts@0
              inputs:
@@ -114,4 +114,41 @@ stages:
            - task: CmdLine@2
              displayName: Start Service
              inputs:
-              script: echo $(PASSWORD) | sudo -S systemctl start dotnet-web
+               script: echo $(PASSWORD) | sudo -S systemctl start dotnet-web
+
+- stage: NETCoreApp_PRD
+  dependsOn: NETCoreApp_STG
+  jobs:
+    - deployment: MyNETCorePrd
+      displayName: DeployingNETCore-Prd
+      environment:
+       name: NET-Core-prd
+       resourceType: VirtualMachine
+      strategy:
+       runOnce:
+         deploy:
+           steps:
+           - task: CmdLine@2
+             displayName: Stop NET Core Service
+             inputs:
+               script: echo $(PASSWORD) | sudo -S systemctl stop dotnet-web
+              
+           - task: DownloadBuildArtifacts@0
+             inputs:
+               buildType: 'current'
+               downloadType: 'single'
+               downloadPath: '$(Agent.BuildDirectory)'
+               artifactName: 'drop'
+
+           - task: ExtractFiles@1
+             displayName: Extract zip file to ~/www
+             inputs:
+               archiveFilePatterns: '/home/jcelestino/azagent/azagent/_work/1/drop/s.zip'
+               destinationFolder: '/home/jcelestino/www'
+               cleanDestinationFolder: false
+               overwriteExistingFiles: true
+
+           - task: CmdLine@2
+             displayName: Start Service
+             inputs:
+               script: echo $(PASSWORD) | sudo -S systemctl start dotnet-web
