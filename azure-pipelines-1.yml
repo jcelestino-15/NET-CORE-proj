@@ -121,7 +121,7 @@ stages:
   dependsOn: NETCoreApp_STG
   jobs:
     - deployment: MyNETCorePrd
-      displayName: DeployNETCore-Prd
+      displayName: DeployingNETCore-Prd
       environment:
        name: NET-Core-prd
        resourceType: VirtualMachine
