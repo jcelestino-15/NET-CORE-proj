@@ -84,7 +84,6 @@ stages:
   dependsOn: NETCoreApp_Dev
   jobs:
     - deployment: MyNETCoreStg
-      displayName: DeployNETCore-Stg
       environment:
         name: NET-Core-stg
         resourceType: VirtualMachine
@@ -121,7 +120,6 @@ stages:
   dependsOn: NETCoreApp_STG
   jobs:
     - deployment: MyNETCorePrd
-      displayName: DeployingNETCore-Prd
       environment:
        name: NET-Core-prd
        resourceType: VirtualMachine
@@ -129,6 +127,7 @@ stages:
        runOnce:
          deploy:
            steps:
+
            - task: CmdLine@2
              displayName: Stop NET Core Service
              inputs:
