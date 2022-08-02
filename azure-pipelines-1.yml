@@ -120,7 +120,7 @@ stages:
 - stage: NETCoreApp_PRD
   dependsOn: NETCoreApp_STG
   jobs:
-    - deployment: MyNETPrd
+    - deployment: MyNETCorePrd
       displayName: DeployNETCore-Prd
       environment:
        name: NET-Core-prd
