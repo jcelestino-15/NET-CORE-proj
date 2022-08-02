@@ -43,7 +43,7 @@ stages:
     and
     (
       succeeded(),
-      eq(variables['Build.SourceBranchName'], 'refs/heads/master' )
+      eq(variables['Build.SourceBranchName'], 'master')
     )
   jobs:
   - deployment: MyNETCoreDev
