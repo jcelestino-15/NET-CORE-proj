@@ -43,10 +43,11 @@ stages:
     and
     (
       succeeded(),
-      eq(variables['Build.SourceBranchName'], 'master' )
+      eq(variables['Build.SourceBranchName'], 'refs/heads/main' )
     )
   jobs:
-  - deployment: Deploy
+  - deployment: MyNETCoreDev
+    displayName: DeployNETCore-Dev
     environment:
       name: NET-Core-dev
       resourceType: VirtualMachine
@@ -82,7 +83,8 @@ stages:
 - stage: NETCoreApp_STG
   dependsOn: NETCoreApp_Dev
   jobs:
-    - deployment: Deploy
+    - deployment: MyNETCoreStg
+      displayName: DeployNETCore-Stg
       environment:
         name: NET-Core-stg
         resourceType: VirtualMachine
@@ -118,7 +120,8 @@ stages:
 - stage: NETCoreApp_PRD
   dependsOn: NETCoreApp_STG
   jobs:
-    - deployment: Deploy 
+    - deployment: MyNETPrd
+      displayName: DeployNETCore-Prd
       environment:
        name: NET-Core-prd
        resourceType: VirtualMachine
