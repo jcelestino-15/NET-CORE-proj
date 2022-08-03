@@ -106,7 +106,7 @@ stages:
            - task: ExtractFiles@1
              displayName: Extract zip file to ~/wwww
              inputs:
-               archiveFilePatterns: '/home/jcelestino/azagent/azagent/_work/1/drop/s.zip'
+               archiveFilePatterns: '/home/jcelestino/azagent/_work/1/drop/s.zip'
                destinationFolder: '/home/jcelestino/www'
                cleanDestinationFolder: false
                overwriteExistingFiles: true
@@ -143,7 +143,7 @@ stages:
            - task: ExtractFiles@1
              displayName: Extract zip file to ~/www
              inputs:
-               archiveFilePatterns: '/home/jcelestino/azagent/azagent/_work/1/drop/s.zip'
+               archiveFilePatterns: '/home/jcelestino/azagent/_work/1/drop/s.zip'
                destinationFolder: '/home/jcelestino/www'
                cleanDestinationFolder: false
                overwriteExistingFiles: true
