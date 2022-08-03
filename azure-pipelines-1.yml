@@ -49,7 +49,7 @@ stages:
   - deployment: MyNETCoreDev
     displayName: DeployNETCore-Dev
     environment:
-      name: NET-Core-dev
+      name: NET-Core-Dev
       resourceType: VirtualMachine
     strategy:
       runOnce:
