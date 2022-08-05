@@ -12,12 +12,21 @@ pool:
 variables:
   buildConfiguration: 'Release'
   RID: 'linux-x64'
+  group: JsonVariableGrp
+  name: MyKey
+  value: '$(MyKey)'
 
 stages:
 - stage: Build
   jobs:
   - job: PublishandTest
     steps:
+    - task: FileTransform@1
+      inputs:
+        folderPath: '$(System.DefaultWorkingDirectory)'
+        fileType: 'json'
+        targetFiles: 'appsettings.json'
+
     - task: DotNetCoreCLI@2
       displayName: Build
       inputs:
