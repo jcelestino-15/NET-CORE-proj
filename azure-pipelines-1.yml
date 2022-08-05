@@ -13,8 +13,7 @@ variables:
   buildConfiguration: 'Release'
   RID: 'linux-x64'
   group: JsonVariableGrp
-  name: MyKey
-  value: '$(MyKey)'
+  
 
 stages:
 - stage: Build
