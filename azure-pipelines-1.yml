@@ -12,8 +12,6 @@ pool:
 variables:
   buildConfiguration: 'Release'
   RID: 'linux-x64'
-  group: JsonVariableGrp
-  
 
 stages:
 - stage: Build
@@ -59,6 +57,10 @@ stages:
     environment:
       name: NET-Core-dev
       resourceType: VirtualMachine
+    variables:
+    - group: Release
+    - name: env
+      value: '$(env-dev)'
     strategy:
       runOnce:
         deploy:
