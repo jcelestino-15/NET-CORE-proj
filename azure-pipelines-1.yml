@@ -61,7 +61,7 @@ stages:
           steps:
           - task: FileTransform@1
             inputs:
-              folderPath: '$(System.DefaultWorkingDirectory)/**/*.zip'
+              folderPath: '/home/jcelestino/azagent/_work/1/drop'
               fileType: 'json'
               targetFiles: '**/appsettings.json'
           - task: CmdLine@2
