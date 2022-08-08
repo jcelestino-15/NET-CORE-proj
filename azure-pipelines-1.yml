@@ -61,7 +61,7 @@ stages:
           steps:
           - task: FileTransform@1
             inputs:
-              folderPath: '/home/jcelestino/azagent/_work/1/drop'
+              folderPath: '/home/jcelestino/www'
               fileType: 'json'
               targetFiles: 'appsettings.json'
           - task: CmdLine@2
