@@ -52,8 +52,8 @@ stages:
       name: NET-Core-dev
       resourceType: VirtualMachine
     variables:
-    - group: Release
-    - name: env
+    - group: Development
+    - name: 'env'
       value: '$(env-dev)'
     strategy:
       runOnce:
@@ -61,9 +61,9 @@ stages:
           steps:
           - task: FileTransform@1
             inputs:
-              folderPath: '/home/jcelestino/www'
+              folderPath: '$(System.DefaultWorkingDirectory)/**/*.zip'
               fileType: 'json'
-              targetFiles: 'appsettings.json'
+              targetFiles: '**/appsettings.json'
           - task: CmdLine@2
             displayName: Stop NET Core Service
             inputs:
