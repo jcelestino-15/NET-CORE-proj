@@ -63,7 +63,7 @@ stages:
             inputs:
               folderPath: '/home/jcelestino/azagent/_work/1/drop'
               fileType: 'json'
-              targetFiles: '**/appsettings.json'
+              targetFiles: 'appsettings.json'
           - task: CmdLine@2
             displayName: Stop NET Core Service
             inputs:
