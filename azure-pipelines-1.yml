@@ -61,7 +61,7 @@ stages:
           steps:
           - task: FileTransform@1
             inputs:
-              folderPath: '$(System.DefaultWorkingDirectory)'
+              folderPath: '/home/jcelestino/www'
               fileType: 'json'
               targetFiles: 'appsettings.json'
           - task: CmdLine@2
