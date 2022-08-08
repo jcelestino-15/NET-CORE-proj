@@ -95,6 +95,8 @@ stages:
       environment:
         name: NET-Core-stg
         resourceType: VirtualMachine
+      variables:
+      - group: Staging
       strategy:
        runOnce:
          deploy:
@@ -118,6 +120,12 @@ stages:
                destinationFolder: '/home/jcelestino/www'
                cleanDestinationFolder: false
                overwriteExistingFiles: true
+
+           - task: FileTransform@1
+             inputs:
+              folderPath: '/home/jcelestino/www'
+              fileType: 'json'
+              targetFiles: 'appsettings.json'
           
            - task: CmdLine@2
              displayName: Start Service
@@ -131,6 +139,8 @@ stages:
       environment:
        name: NET-Core-prd
        resourceType: VirtualMachine
+      variables:
+      - group: Production
       strategy:
        runOnce:
          deploy:
@@ -155,6 +165,12 @@ stages:
                destinationFolder: '/home/jcelestino/www'
                cleanDestinationFolder: false
                overwriteExistingFiles: true
+          
+           - task: FileTransform@1
+             inputs:
+              folderPath: '/home/jcelestino/www'
+              fileType: 'json'
+              targetFiles: 'appsettings.json'
 
            - task: CmdLine@2
              displayName: Start Service
