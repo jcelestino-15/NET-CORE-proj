@@ -53,17 +53,10 @@ stages:
       resourceType: VirtualMachine
     variables:
     - group: Development
-    - name: 'env'
-      value: '$(env-dev)'
     strategy:
       runOnce:
         deploy:
           steps:
-          - task: FileTransform@1
-            inputs:
-              folderPath: '/home/jcelestino/www'
-              fileType: 'json'
-              targetFiles: 'appsettings.json'
           - task: CmdLine@2
             displayName: Stop NET Core Service
             inputs:
@@ -77,13 +70,19 @@ stages:
               artifactName: 'drop'
 
           - task: ExtractFiles@1
-            displayName: Extract zip file to ~/wwww
+            displayName: Extract zip file to ~/www
             inputs:
               archiveFilePatterns: '/home/jcelestino/azagent/_work/1/drop/s.zip'
               destinationFolder: '/home/jcelestino/www'
               cleanDestinationFolder: false
               overwriteExistingFiles: true
           
+          - task: FileTransform@1
+            inputs:
+              folderPath: '/home/jcelestino/www'
+              fileType: 'json'
+              targetFiles: 'appsettings.json'
+
           - task: CmdLine@2
             displayName: Start Service
             inputs:
